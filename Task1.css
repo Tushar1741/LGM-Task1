@@ -1,0 +1,26 @@
+div{
+    background-color:orangered;
+}
+
+
+
+
+
+body{
+    
+        
+        
+        background-color: blue;
+        animation-name: example;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes example {
+        from {background-color:skyblue;}
+        to {background-color: yellowgreen;}
+      }
+#j{
+    color: purple;
+    text-align: center;
+}
