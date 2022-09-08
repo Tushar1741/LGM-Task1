@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1 id="j" >Welcome !! </h1>
+    <link rel="stylesheet" href="Task1.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slide-in.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.js"></script>
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+   
+   
+    
+   
+      <main>  
+        <div class="container mt-5 col-6">
+            <h1 > MY TODO List</h1>
+          
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add Your Items..." aria-label="Recipient&#39;s username" aria-describedby="button-addon2">
+            <button id="add_btn" class="btn btn-outline-success" type="button">ADD</button>
+          </div>
+          <ul id="parentList" class="list-group">
+            
+          
+          <h3 class="emptyMessage">Todo List</h3></ul>
+  
+        </div>
+      </main>
+   
+    
+      <script> 
+      let addBtn=document.getElementById('add_btn')
+         addBtn.addEventListener('click', dietName)
+         let parentList=document.getElementById('parentList')
+         function dietName(e){
+           if(parentList.children[0].className=="emptyMessage")
+           {
+             parentList.children[0].remove()
+           }
+         
+           let currentBtn=e.currentTarget;
+           let currentInput=currentBtn.previousElementSibling
+           let  currentDiteNames=currentInput.value
+           
+           let newLi =document.createElement('li')
+           //newLi.classList.add('list-group-item')
+           newLi.className="list-group-item d-flex justify-content-between"
+           /*newLi.textContent = currentInput.value*/
+           newLi.innerHTML=`<h3 class="flex-grow-1">${currentDiteNames}</h3><button class="btn btn-warning mx-1 " onclick="editDiteName(this)">edit</button><button class="btn btn-danger" onclick="removeDiet(this)">remove</button>`
+  
+           //let parentList=document.getElementById('parentList');
+           parentList.appendChild(newLi)
+          
+         }
+         function removeDiet(e){
+           e.parentElement.remove()
+           let parentList=document.getElementById('parentList')
+  
+           if(parentList.children.length<=0)
+           {
+             let newEmptyMessage =document.createElement('h3')
+             newEmptyMessage.classList.add("emptyMessage")
+             newEmptyMessage.textContent ="nothing is there plz add diet name"
+             parentList.appendChild(newEmptyMessage)
+           }
+         }//e=currentElement or currElement
+         function editDiteName(currentElement){
+           if(currentElement.textContent=="Done"){
+             currentElement.textContent="edit"
+             let currentDietName=currentElement.previousElementSibling.value
+             let cuurentHeading=document.createElement('h3');
+             currentHeading.className="flex-grow-1"
+             currentHeading.textContent=currentDietName
+             currentElement.parentElement.replaceChild(currentHeading,currentElement.previousElementSibling)
+  
+  
+           }
+           else{
+           currentElement.textContent = "Done"
+           let currentDietName=currentElement.previousElementSibling.textContent
+           let currentInput=document.createElement('input')
+           currentInput.type="text"
+           currentInput.placeholder="diet name"
+           currentInput.className="form-control"
+           currentInput.value=currentDietName
+           currentElement.parentElement.replaceChild(currentInput,currentElement.previousElementSibling)
+           }
+  
+         }
+      </script>
+  
+         
+</body>
+</html>
